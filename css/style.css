@@ -1,0 +1,506 @@
+/* Base Styles and Typography */
+:root {
+    /* Light mode variables */
+    --primary-color: #4285F4;
+    --secondary-color: #F8F9FA;
+    --text-color: #202124;
+    --accent-color: #FBBC05;
+    --success-color: #34A853;
+    --danger-color: #EA4335;
+    --font-title: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --background-color: #FFFFFF;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+    --primary-color: #8AB4F8;
+    --secondary-color: #202124;
+    --text-color: #E8EAED;
+    --accent-color: #FDD663;
+    --success-color: #81C995;
+    --danger-color: #F28B82;
+    --background-color: #202124;
+    --card-background: #303134;
+    --border-color: #5F6368;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* High contrast mode variables */
+[data-theme="high-contrast"] {
+    --primary-color: #0000FF;
+    --secondary-color: #FFFFFF;
+    --text-color: #000000;
+    --accent-color: #FF0000;
+    --success-color: #008000;
+    --danger-color: #FF0000;
+    --background-color: #FFFFFF;
+    --card-background: #FFFFFF;
+    --border-color: #000000;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: clamp(16px, 1vw + 14px, 18px);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Responsive Typography with Modern Scale */
+h1 { 
+    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+    text-align: center;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+h2 { 
+    font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+p { 
+    font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Sport Icons */
+.icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-medal::before {
+    content: "🏅";
+    font-size: 1.2em;
+}
+
+.icon-clock::before {
+    content: "⏱";
+    font-size: 1.2em;
+}
+
+.icon-shoe::before {
+    content: "👟";
+    font-size: 1.2em;
+}
+
+.icon-trophy::before {
+    content: "🏆";
+    font-size: 1.2em;
+}
+
+.icon-runner::before {
+    content: "🏃";
+    font-size: 1.2em;
+}
+
+/* Layout */
+.container {
+    width: min(90%, 1200px);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 3rem);
+}
+
+/* Navigation */
+nav {
+    background-color: var(--card-background);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    padding: clamp(0.5rem, 2vh, 1rem) 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    font-family: var(--font-title);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    border-radius: 20px;
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+    letter-spacing: 0.02em;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+    background-color: rgba(66, 133, 244, 0.1);
+}
+
+nav ul li a::after {
+    content: none;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: clamp(2rem, 8vh, 5rem) clamp(1rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+header h1 {
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+header h2 {
+    color: white;
+    border-bottom: none;
+    margin: 1rem 0 0;
+    font-weight: 500;
+    opacity: 0.9;
+    font-size: clamp(1.25rem, 2.5vw + 0.5rem, 2rem);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: clamp(1.5rem, 4vh, 2.5rem) 0;
+    margin-top: 3rem;
+    border-radius: 20px 20px 0 0;
+    font-family: var(--font-body);
+}
+
+footer p {
+    margin-bottom: 0.75rem;
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Table Design */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--card-background);
+    font-family: var(--font-body);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    font-family: var(--font-title);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+th:first-child {
+    border-top-left-radius: 8px;
+}
+
+th:last-child {
+    border-top-right-radius: 8px;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+
+/* Individual Results Section */
+#individual-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+#individual-results h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.athlete {
+    flex: 1 1 300px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.athlete:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--shadow-color);
+}
+
+.athlete figure {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.athlete figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.athlete:hover figure img {
+    transform: scale(1.05);
+}
+
+.athlete figcaption {
+    color: var(--text-color);
+    padding: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    font-family: var(--font-title);
+    font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+    margin-top: 0.5rem;
+}
+
+.athlete dl {
+    padding: 1.5rem;
+    font-family: var(--font-body);
+}
+
+.athlete dt {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+    margin-bottom: 0.25rem;
+}
+
+.athlete dd {
+    margin-bottom: 1rem;
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+}
+
+/* Progress Bars */
+.progress-bar {
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    height: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: var(--success-color);
+    height: 100%;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.fab:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Theme Toggle Buttons */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1001;
+}
+
+.theme-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-title);
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+    font-weight: 500;
+}
+
+.theme-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* System preference based dark mode */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --primary-color: #8AB4F8;
+        --secondary-color: #202124;
+        --text-color: #E8EAED;
+        --background-color: #202124;
+        --card-background: #303134;
+        --border-color: #5F6368;
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 5px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    nav ul li a {
+        padding: 6px 12px;
+        font-size: clamp(0.8rem, 1vw + 0.5rem, 0.9rem);
+    }
+
+    .athlete {
+        flex: 1 1 100%;
+    }
+
+    .theme-toggle {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Larger screens */
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 85%;
+    }
+}
