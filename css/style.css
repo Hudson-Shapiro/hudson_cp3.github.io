@@ -13,6 +13,7 @@
     --card-background: #FFFFFF;
     --border-color: #E0E0E0;
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --focus-outline: 3px solid #4285F4;
 }
 
 /* Dark mode variables */
@@ -43,15 +44,56 @@
     --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
+/* System preference based dark mode */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --primary-color: #8AB4F8;
+        --secondary-color: #202124;
+        --text-color: #E8EAED;
+        --accent-color: #FDD663;
+        --success-color: #81C995;
+        --danger-color: #F28B82;
+        --background-color: #202124;
+        --card-background: #303134;
+        --border-color: #5F6368;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Focus styles for accessibility */
+*:focus {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Focus-visible for better keyboard navigation */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Add padding to account for fixed header/nav */
+    scroll-padding-top: 120px;
 }
 
 body {
@@ -68,13 +110,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
     font-weight: 700;
     line-height: 1.2;
+    color: var(--text-color);
 }
 
 /* Responsive Typography with Modern Scale */
 h1 { 
     font-size: clamp(2rem, 3vw + 1rem, 2.5rem);
     text-align: center;
-    color: white;
     margin-top: 0;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
@@ -97,7 +139,6 @@ p {
     margin-bottom: 1.5rem;
     line-height: 1.7;
 }
-
 
 /* Navigation */
 nav {
@@ -131,21 +172,23 @@ nav ul li a {
     padding: 0.75rem 1.25rem;
     display: inline-block;
     position: relative;
-    transition: color 0.3s ease;
     white-space: nowrap;
     border-radius: 20px;
     font-size: clamp(1rem, 1vw + 0.75rem, 1.2rem);
     letter-spacing: 0.02em;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a:focus {
     color: var(--accent-color);
     background-color: rgba(66, 133, 244, 0.1);
+    text-decoration: underline;
 }
 
 nav ul li a::after {
     content: none;
 }
+
 /* Header */
 header {
     background-color: var(--primary-color);
@@ -167,6 +210,11 @@ header h1 {
 header h1 a {
     color: white;
     text-decoration: none;
+}
+
+header h1 a:hover,
+header h1 a:focus {
+    text-decoration: underline;
 }
 
 header h2 {
@@ -200,7 +248,8 @@ footer a {
     font-weight: 500;
 }
 
-footer a:hover {
+footer a:hover,
+footer a:focus {
     text-decoration: underline;
 }
 
@@ -278,12 +327,17 @@ tr:nth-child(even) {
     border-radius: 12px;
     box-shadow: 0 4px 6px var(--shadow-color);
     overflow: hidden;
-    transition: all 0.3s ease;
 }
 
-#individual-results .athlete:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px var(--shadow-color);
+@media (prefers-reduced-motion: no-preference) {
+    #individual-results .athlete {
+        transition: all 0.3s ease;
+    }
+    
+    #individual-results .athlete:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px var(--shadow-color);
+    }
 }
 
 #individual-results .athlete figure {
@@ -296,11 +350,16 @@ tr:nth-child(even) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
-#individual-results .athlete:hover figure img {
-    transform: scale(1.05);
+@media (prefers-reduced-motion: no-preference) {
+    #individual-results .athlete figure img {
+        transition: transform 0.3s ease;
+    }
+    
+    #individual-results .athlete:hover figure img {
+        transform: scale(1.05);
+    }
 }
 
 #individual-results .athlete figcaption {
@@ -333,7 +392,6 @@ tr:nth-child(even) {
     font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
 }
 
-
 /* Floating Action Button */
 .fab {
     position: fixed;
@@ -348,12 +406,17 @@ tr:nth-child(even) {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 10px var(--shadow-color);
-    transition: all 0.3s ease;
 }
 
-.fab:hover {
-    background-color: var(--primary-color);
-    transform: scale(1.1);
+@media (prefers-reduced-motion: no-preference) {
+    .fab {
+        transition: all 0.3s ease;
+    }
+    
+    .fab:hover {
+        background-color: var(--primary-color);
+        transform: scale(1.1);
+    }
 }
 
 /* Theme Toggle Buttons */
@@ -373,45 +436,40 @@ tr:nth-child(even) {
     background-color: var(--card-background);
     color: var(--text-color);
     cursor: pointer;
-    transition: all 0.3s ease;
     font-family: var(--font-title);
     font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
     font-weight: 500;
 }
 
-.theme-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
+@media (prefers-reduced-motion: no-preference) {
+    .theme-btn {
+        transition: all 0.3s ease;
+    }
+    
+    .theme-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
 }
 
 /* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 
-.fade-in {
-    animation: fadeIn 0.5s ease-in;
-}
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
 
-@keyframes slideIn {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
+    @keyframes slideIn {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
 
-.slide-in {
-    animation: slideIn 0.5s ease-out;
-}
-
-/* System preference based dark mode */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --primary-color: #8AB4F8;
-        --secondary-color: #202124;
-        --text-color: #E8EAED;
-        --background-color: #202124;
-        --card-background: #303134;
-        --border-color: #5F6368;
+    .slide-in {
+        animation: slideIn 0.5s ease-out;
     }
 }
 
