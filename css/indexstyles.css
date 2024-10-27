@@ -1,7 +1,6 @@
-/* Index Styles - Inspired by modern, sleek designs */
 
 :root {
-    /* Light mode variables */
+    /* Light mode  */
     --primary-color: #4285F4;
     --secondary-color: #F8F9FA;
     --text-color: #202124;
@@ -16,10 +15,10 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
     --profile-border: 4px solid var(--primary-color);
     --profile-shadow: 0 4px 12px var(--shadow-color);
-    --link-color: #0B4EA2; /* Added darker blue for better contrast */
+    --link-color: #0B4EA2; /* darker blue -- better contrast */
 }
 
-/* Dark mode variables */
+/* Dark mode -- */
 [data-theme="dark"] {
     --primary-color: #8AB4F8;
     --secondary-color: #202124;
@@ -33,10 +32,10 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
     --profile-border: 4px solid var(--primary-color);
     --profile-shadow: 0 4px 12px var(--shadow-color);
-    --link-color: #B3D1FF; /* Added lighter blue for dark mode contrast */
+    --link-color: #B3D1FF; /* keep contrast poppin' */
 }
 
-/* High contrast mode variables */
+/* High contrast mode -- accessibility  */
 [data-theme="high-contrast"] {
     --primary-color: #0000FF;
     --secondary-color: #FFFFFF;
@@ -50,7 +49,7 @@
     --shadow-color: rgba(0, 0, 0, 0.5);
     --profile-border: 4px solid var(--primary-color);
     --profile-shadow: 0 4px 12px var(--shadow-color);
-    --link-color: #0000CC; /* Added dark blue for high contrast */
+    --link-color: #0000CC; /* blue but darker */
 }
 
 * {
@@ -59,7 +58,7 @@
     padding: 0;
 }
 
-/* Respect user's motion preferences */
+/* for motion sick ppl */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
@@ -88,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-/* Responsive Typography with Modern Scale */
+/* Typography */
 h1 { 
     font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
     text-align: center;
@@ -115,7 +114,7 @@ p {
     line-height: 1.7;
 }
 
-/* Skip to main content button - Enhanced for accessibility */
+/* Skip to main content button */
 .skip-to-main {
     position: fixed;
     top: -100%;
@@ -137,7 +136,7 @@ p {
     outline-offset: 2px;
 }
 
-/* Navigation with enhanced accessibility */
+/* Nav -- */
 nav {
     background-color: var(--card-background);
     backdrop-filter: blur(10px);
@@ -156,11 +155,13 @@ nav.sticky {
 
 nav ul {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     list-style-type: none;
     padding: 0;
     flex-wrap: wrap;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
+    gap: 10px;
 }
 
 nav ul li {
@@ -172,7 +173,7 @@ nav ul li a {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 800;
-    padding: 0.75rem 1.25rem;
+    padding: 10px 20px;
     display: inline-block;
     position: relative;
     transition: color 0.3s ease;
@@ -195,7 +196,7 @@ nav ul li a:focus-visible {
     outline-offset: 2px;
 }
 
-/* Hero Section with enhanced contrast */
+/* Hero section */
 .hero {
     background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
     color: white;
@@ -218,10 +219,10 @@ nav ul li a:focus-visible {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Athlete Profile Images with enhanced accessibility */
+/* Athlete pics */
 .athlete-profile {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     border: var(--profile-border);
@@ -247,15 +248,15 @@ nav ul li a:focus-visible {
 }
 
 .athlete-profile-lg {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     border: var(--profile-border);
     box-shadow: var(--profile-shadow);
 }
 
-/* Meets Section with enhanced accessibility */
+/* Meets section */
 #meets {
     padding: 5vh 5vw;
     background-color: var(--secondary-color);
@@ -272,7 +273,7 @@ nav ul li a:focus-visible {
 
 .meet-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 100%;
     gap: 30px;
     width: 90%;
     margin: 0 auto;
@@ -323,11 +324,11 @@ nav ul li a:focus-visible {
 }
 
 .meet-card ul li a {
-    color: var(--link-color); /* Updated to use new high-contrast link color */
+    color: var(--link-color);
     text-decoration: none;
     transition: color 0.3s ease;
     padding: 0.25rem 0.5rem;
-    font-weight: 600; /* Added for better visibility */
+    font-weight: 600;
 }
 
 .meet-card ul li a:hover,
@@ -335,10 +336,10 @@ nav ul li a:focus-visible {
     color: var(--primary-color);
     outline: 2px solid var(--primary-color);
     border-radius: 4px;
-    text-decoration: underline; /* Added for better visibility on hover/focus */
+    text-decoration: underline;
 }
 
-/* Team Section with enhanced accessibility */
+/* Team Section -- better accessibility */
 #team {
     background-color: var(--card-background);
     padding: 5vh 5vw;
@@ -389,7 +390,7 @@ nav ul li a:focus-visible {
     }
 }
 
-/* Contact Section with enhanced accessibility */
+/* Contact Section  with  better accessibility */
 #contact {
     background-color: var(--secondary-color);
     padding: 5vh 5vw;
@@ -411,7 +412,7 @@ address {
 }
 
 .social-links a {
-    color: var(--link-color); /* Updated to use new high-contrast link color */
+    color: var(--link-color);
     text-decoration: none;
     margin: 0 10px;
     font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.3rem);
@@ -426,7 +427,7 @@ address {
     border-radius: 4px;
 }
 
-/* Footer with enhanced accessibility */
+/* Footer  accessibility */
 footer {
     background-color: var(--primary-color);
     color: white;
@@ -437,58 +438,45 @@ footer {
 }
 
 /* Responsive Design */
-@media (min-width: 768px) {
+@media screen and (width >= 768px) {
     .hero p {
         width: 70%;
     }
-}
-
-@media (min-width: 1024px) {
-    .hero p {
-        width: 60%;
-    }
-}
-
-@media (max-width: 1200px) {
+    
     .meet-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-
-@media (max-width: 768px) {
-    .meet-grid {
-        grid-template-columns: 100%;
-    }
-    
-    nav {
-        padding: 10px;
-    }
 
     nav ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
+        gap: clamp(0.75rem, 2vw, 1.25rem);
     }
 
     nav ul li a {
-        padding: 10px 20px;
-        font-size: clamp(1rem, 1vw + 0.75rem, 1.2rem);
+        padding: 0.75rem 1.25rem;
     }
 
     .athlete-profile {
-        width: 150px;
-        height: 150px;
-    }
-
-    .athlete-profile-lg {
         width: 200px;
         height: 200px;
     }
 }
 
-/* System preference based dark mode */
+@media screen and (width >= 1024px) {
+    .hero p {
+        width: 60%;
+    }
+    
+    .meet-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .athlete-profile-lg {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* System dark mode */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         --primary-color: #8AB4F8;
@@ -497,11 +485,11 @@ footer {
         --background-color: #202124;
         --card-background: #303134;
         --border-color: #5F6368;
-        --link-color: #B3D1FF; /* Added lighter blue for automatic dark mode */
+        --link-color: #B3D1FF;
     }
 }
 
-/* Animations - Only play when reduced motion is not preferred */
+/* Animations -- reduced motion  */
 @media (prefers-reduced-motion: no-preference) {
     @keyframes fadeIn {
         from { opacity: 0; }
@@ -521,7 +509,6 @@ footer {
         animation: slideIn 0.5s ease-out;
     }
 }
-
 
 #ender {
     color: var(--text-color);
