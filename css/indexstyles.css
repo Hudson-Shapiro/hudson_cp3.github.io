@@ -69,6 +69,8 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-title);
     margin-bottom: 1.5rem;
@@ -103,58 +105,48 @@ p {
     line-height: 1.7;
 }
 
-/* Sport Icons */
-.icon {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: middle;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.icon-medal::before {
-    content: "🏅";
-    font-size: 1.2em;
-}
-
-.icon-clock::before {
-    content: "⏱";
-    font-size: 1.2em;
-}
-
-.icon-shoe::before {
-    content: "👟";
-    font-size: 1.2em;
-}
-
-.icon-trophy::before {
-    content: "🏆";
-    font-size: 1.2em;
-}
-
-.icon-runner::before {
-    content: "🏃";
-    font-size: 1.2em;
-}
-
 /* Layout */
-.container {
+/* .container {
     width: min(90%, 1200px);
     margin: 0 auto;
     padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 3rem);
+} */
+
+/* Skip to main content button */
+.skip-to-main {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 1001; /* Higher than nav's z-index */
+    transition: top 0.3s ease;
+}
+
+.skip-to-main:focus {
+    top: 0;
 }
 
 /* Navigation */
 nav {
     background-color: var(--card-background);
     backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 1000;
     box-shadow: 0 2px 10px var(--shadow-color);
-    padding: clamp(0.5rem, 2vh, 1rem) 0;
+    padding: clamp(0.75rem, 2vh, 1.25rem) 0;
+}
+
+nav.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 nav ul {
@@ -163,7 +155,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
     flex-wrap: wrap;
-    gap: clamp(0.5rem, 2vw, 1rem);
+    gap: clamp(0.75rem, 2vw, 1.25rem);
 }
 
 nav ul li {
@@ -174,14 +166,14 @@ nav ul li a {
     font-family: var(--font-title);
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
+    font-weight: 800;
+    padding: 0.75rem 1.25rem;
     display: inline-block;
     position: relative;
     transition: color 0.3s ease;
     white-space: nowrap;
     border-radius: 20px;
-    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+    font-size: clamp(1rem, 1vw + 0.75rem, 1.2rem);
     letter-spacing: 0.02em;
 }
 
@@ -194,12 +186,15 @@ nav ul li a::after {
     content: none;
 }
 
+
+
 /* Hero Section */
 .hero {
     background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
     color: white;
     text-align: center;
     padding: 8vh 5vw;
+    margin-top: 0px; /* Add margin to prevent content from hiding under fixed nav */
 }
 
 .hero h1 {
@@ -435,7 +430,7 @@ footer {
     }
     
     nav {
-        padding: 5px;
+        padding: 10px;
     }
 
     nav ul {
@@ -443,12 +438,12 @@ footer {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        gap: 10px;
     }
 
     nav ul li a {
-        padding: 6px 12px;
-        font-size: clamp(0.8rem, 1vw + 0.5rem, 0.9rem);
+        padding: 10px 20px;
+        font-size: clamp(1rem, 1vw + 0.75rem, 1.2rem);
     }
 
     .athlete-profile {
